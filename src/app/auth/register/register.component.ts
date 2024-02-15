@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
-  constructor(private fb: FormBuilder, private auth: AuthService) {}
+  constructor(private fb: FormBuilder, private auth: AuthService, private router:Router) {}
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       name: [''],
@@ -26,6 +27,7 @@ export class RegisterComponent implements OnInit {
       (res: any) => {
         console.log('success', res);
         alert(res.message);
+        this.router.navigate(['auth/login'])
       },
       (error: HttpErrorResponse) => {
         console.error('Error:', error);
