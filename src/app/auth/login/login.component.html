@@ -1,7 +1,5 @@
 <div class="container">
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <label for="name">Name:</label>
-    <input type="text" id="name" formControlName="name" />
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit">
 
     <label for="email">Email:</label>
     <input type="email" id="email" formControlName="email" />
@@ -9,6 +7,6 @@
     <label for="password">Password:</label>
     <input type="password" id="password" formControlName="password" />
 
-    <button type="submit">Create Account</button>
+    <button type="submit">Login</button>
   </form>
 </div>
